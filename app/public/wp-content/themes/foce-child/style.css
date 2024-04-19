@@ -8,7 +8,7 @@
  Version: 0.1
  */
 
- .story__article::after {
+ .story__article::after, .story h2::after, #studio h2::before, #studio h2::after {
    animation: rotation 20s infinite linear;
 }
 
