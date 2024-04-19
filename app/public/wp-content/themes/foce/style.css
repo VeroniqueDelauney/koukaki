@@ -783,7 +783,6 @@ textarea {
 	position: absolute;
 	left: calc(50% + 414px);
 	top: 2em;
-	border:2px solid red
 }
 
 .story #characters {
