@@ -12,6 +12,17 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+
+        <!-- <section id="nomination" class="toAnim" style="width:100%">
+            <div>
+                <h3>Fleurs d’oranger & chats errants est nominé aux Oscars Short Film Animated de 2022 !</h3>
+            </div>
+            <div>
+                <img src="http://koukaki.local/wp-content/uploads/2024/04/18-courts-metrages-francais-d-animation-eligibles-aux-oscars-2021.jpeg'; ?> " alt="Logo Oscar">
+            </div>
+        </section> -->
+
+
         <ul>
             <li><a href="#">Mentions Légales</a></li>
             <li><a href="#">STUDIO KOUKAKI</a></li>
@@ -21,13 +32,6 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
-
-<script src="./wp-content/themes/foce-child/js/skroll.js"></script>
-<script>
-    var s = skrollr.init();
-</script>
-
 
 
 </body>

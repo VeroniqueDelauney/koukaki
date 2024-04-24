@@ -3,24 +3,11 @@
 get_header();
 ?>
 
-
- <!-- style="position:relative; width:100%; height:800px; overflow:hidden;"
-            data-0="opacity:0" 
-            data-500="opacity:1" 
-        style="width:1440px; background:#FFF5E9; height:806px; margin:auto;position:relative; border:1px solid red"
-
-        style="position: absolute;" data-bottom-top="transform:translate3d(0, 0px, 0)" data-top-bottom="transform:translate3d(0, -800px, 0)"
-    -->
-
-
-    <main id="primary" class="site-main"  >
-        <!-- <section class="banner">
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
-        </section> -->
-        <section class="banner">
+    <main id="primary" class="site-main">
+        <section class="banner toAnim">
             <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
         </section>
-        <section id="#story" class="story">
+        <section id="#story" class="story toAnim">
             <h2>L'histoire</h2>
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
@@ -71,13 +58,13 @@ get_header();
         </section>
 
 
-        <section id="studio">
+        <section id="studio" class="toAnim">
             <h2>Studio Koukaki</h2>
             <div>
                 <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
                 <p>Avec une créativité et une capacité d’innovation mondialement reconnues, une expertise éditoriale et commerciale à la pointe de son industrie, le Studio Koukaki se positionne comme un acteur incontournable dans un marché en forte croissance. Koukaki construit chaque année de véritables succès et capitalise sur de puissantes marques historiques. Cette année, il vous présente “Fleurs d’oranger et chats errants”.</p>
             </div>
-            </section>
+        </section>
     </main><!-- #main -->
 
 <?php

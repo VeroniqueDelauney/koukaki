@@ -1,0 +1,79 @@
+body {
+    a { 
+        color: pink;
+        &:hover { // & indique que c'est l'élément sur lequel on est en ce moment
+            color: blue
+        } 
+        &.btn {
+            background: yellow;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+/* Animation de rotation pour les fleurs */
+.story__article::after, .story h2::after, #studio h2::before, #studio h2::after {
+    animation: rotation 20s infinite linear;
+ }
+ 
+ @keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+ }
+
+#nomination {
+    display: flex;
+    flex-direction: row;
+    border:5px solid lime;
+    justify-content: space-between;
+    width: 66.66%;
+    margin: auto;
+}
+
+#nomination h3 {
+    color:red;
+    background-image: url(http://koukaki.local/wp-content/themes/foce/assets/images/orange_place_bg.png);
+}
+
+
+h2 {
+    opacity: 1;
+    transition: opacity 2s ease 0s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+  
+
+
+// sass --watch theme.scss:theme.css --style compressed
+
+// section {
+//     animation: fadeInAnimation ease 3s;
+//     border:5px solid yellow!important;
+// }
+
+// @keyframes fadeInAnimation {
+//     0% {
+//         opacity: 0;
+//     }
+
+//     100% {
+//         opacity: 1;
+//     }
+// }
+.toAnim {
+    opacity: 0;
+    transition: opacity 2s ease 0s;
+}
+  
+.toAnim.anim {
+    opacity: 1;
+}
