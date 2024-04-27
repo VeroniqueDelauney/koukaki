@@ -4,49 +4,7 @@ get_header();
 ?>
 
     <main id="primary" class="site-main">
-        <section>
-            <style>
-                .btn {
-                    width:10em;
-                    text-align:center;
-                    padding:1em;
-                    background:pink;
-                    border-radius:0.5em;
-                    margin-top:2em;
-
-                    &:active {
-                        & + .progress {
-                            & > .progress__bar {
-                                transform: scaleX(3);
-                            }
-                        }
-                    }
-                }
-
-                .progress {
-                    border: 1px solid black;
-                    height:1em;
-                    margin:2em 0;
-                    width:50%;
-                    overflow: hidden;
-                    
-                    .progress__bar {
-                        height:100%;
-                        background-color: pink;
-                        transform: scaleX(0);
-                        transition: transform 1000ms cubic-bezier(.32,0,.07,1);
-                        transform-origin: left;
-                    }
-                }
-
-            </style>
-            <div class="container">
-                <div class="btn">Charger!</div>
-                <div class="progress">
-                    <div class="progress__bar"></div>
-                </div>
-            </div>
-        </section>
+        
         <section class="banner toAnim">
             <div class="position-absolute zindex100">
                 <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">

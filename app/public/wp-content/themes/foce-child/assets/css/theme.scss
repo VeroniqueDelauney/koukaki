@@ -23,8 +23,6 @@ footer {
     ul {
         margin-top: 23em
     }
-
-
 }
 
 .site-footer {
@@ -57,7 +55,19 @@ footer {
         background-image: none;
 
         img {
-            width:100%
+            width:100%;
+            animation-name: floating;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+                 
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            25% { transform: translate(-10px,  10px); }
+            50%  { transform: translate(8px, 15px); }
+            75% { transform: translate(-10px,  10px); }
+            100%   { transform: translate(0, -0px); }    
         }
 
         video {
@@ -67,9 +77,6 @@ footer {
             z-index: 0;
         } 
     }
-
-
-
     @media screen and (max-width: 600px) {
         min-height: 400px;
         video {
