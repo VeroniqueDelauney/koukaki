@@ -14,6 +14,9 @@ function theme_enqueue_styles() {
     wp_enqueue_script( 'app-script', get_stylesheet_directory_uri() . '/assets/js/app.js', array('skrollr', 'swiper-js') ); // On indique que c'est dépendant de skrollr
  }
 
+ $path = '/js/app.js';
+//  wp_register_script('someName-'.$entry, get_template_directory_uri() . $path, [], false, true);  
+ 
 // Get customizer options form parent theme
 if ( get_stylesheet() !== get_template() ) {
     add_filter( 'pre_update_option_theme_mods_' . get_stylesheet(), function ( $value, $old_value ) {
