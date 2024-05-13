@@ -1,82 +1,119 @@
 document.addEventListener("DOMContentLoaded", (event) => { // On attend que toute la page soit chargée 
 	var s = skrollr.init();
-	document.getElementById("showMenu").style.display = "none";
-	
+	document.getElementById("showMenu").style.display = "none";	
 	
 	document.querySelector('.menu-toggle').addEventListener('click',function(){
 		var x = document.getElementById("site-navigation");
 		var menu = document.getElementById("showMenu");
 		var menuToggle = document.querySelector(".menu-toggle");
 
-		// var line1 = document.getElementById("Line1");
-		// var line2 = document.getElementById("Line2");
-		// var line3 = document.getElementById("Line3");
-
 		if(x.className === "main-navigation toggled") {
 			menu.style.display = "block";
-			menuToggle.classList.add("rotate");
-			// line1.style.transform = "rotate(45deg)";
-			// line2.style.display = "none";
-			// line3.style.transform = "rotate(-45deg)";			
+			menuToggle.classList.add("rotate");		
 		}
 		else {
 			menu.style.display = "none";
 			menuToggle.classList.remove("rotate");
-			// line1.style.transform = "rotate(0)";
-			// line2.style.display = "block";
-			// line3.style.transform = "rotate(0)";
 		}
-	});
-
-
+});
 	
 
-	let linksMenu = document.querySelectorAll("a.link");
-	if(linksMenu) {
-		linksMenu.forEach(linkMenu => {
-			linkMenu.addEventListener('click',function(){
-				document.getElementById('showMenu').style.display = "none";
-			});	
+
+
+// Animation fade-in des sections
+var sections = document.querySelectorAll("section");
+if(sections) {
+	window.addEventListener("scroll", function() {
+		sections.forEach(function (section) {
+			var sectionTop = section.getBoundingClientRect().top;  
+			var windowHeight = window.innerHeight;  
+			if (sectionTop < windowHeight * 0.8) {
+				section.classList.add("anim");
+			}
 		});
-	}
+	});
+};
 
 
+var h2Titles = document.querySelector("h2");
+if(h2Titles) {
+	window.addEventListener("scroll", function() {
+		h2Titles.forEach(function (h2) {
+			var sectionTop = section.getBoundingClientRect().top;  
+			var windowHeight = window.innerHeight;  
+			if (sectionTop < windowHeight * 0.8) {
+				h2.classList.add("anim");
+			}
+			else {
+				h2.classList.remove("anim");
+			}
+		});
+	});
+};
 
 
-
-	// Appel initial pour vérifier les éléments visibles lors du chargement de la page
-	//toggleAnimClass();
-
-
-// function animClouds() {
-// 	var clouds = document.querySelector('.big_cloud_container');
-// 	clouds.forEach(function(elem) {
-// 	  if (isInViewport(elem)) {
-// 		elem.classList.add('clouds');
+// //fonction de slide des titres
+// function checkSlideH2() {
+// 	slideH2.forEach(function (slide) {
+// 	  var slideTop = slide.getBoundingClientRect().top;
+  
+// 	  var windowHeight = window.innerHeight;
+  
+// 	  if (slideTop < windowHeight * 0.8) {
+// 		slide.classList.add("slide-in");
 // 	  } else {
-// 		elem.classList.remove('clouds');
+// 		slide.classList.remove("slide-in");
 // 	  }
-// 	});	
-// }
+// 	});
+//   }
+  
 
 
 
 
-var swiper = new Swiper(".mySwiper", {
-	effect: "coverflow",
-	grabCursor: true,
-	centeredSlides: true,
-	slidesPerView: "auto",
-	coverflowEffect: {
-		rotate: 50,
-		stretch: 0,
-		depth: 100,
-		modifier: 1,
-		slideShadows: true,
-	},
-	pagination: {
-		el: ".swiper-pagination",
-	},
+// Animation menu pour appeler l'animation sur chaque lien qd le menu est ouvert en plein écran
+window.addEventListener("load", function() {
+	var reveals = document.querySelectorAll("a.animationDown");
+	for (var i = 0; i < reveals.length; i++) {
+		var windowHeight = window.innerHeight;
+		var elementTop = reveals[i].getBoundingClientRect().top;
+		var elementVisible = 2;
+		if (elementTop < windowHeight - elementVisible) {
+			reveals[i].classList.add("animationDownActivated");
+		} else {
+			reveals[i].classList.remove("animationDownActivated");
+		}
+	}	
+});
+
+
+
+// Hide full screen menu when a link is clicked
+let linksMenu = document.querySelectorAll("a.link");
+if(linksMenu) {
+	linksMenu.forEach(linkMenu => {
+		linkMenu.addEventListener('click',function(){
+			document.getElementById('showMenu').style.display = "none";
+		});
+	});
+}
+
+
+	var swiper = new Swiper(".mySwiper", {
+		effect: "coverflow",
+		grabCursor: true,
+		centeredSlides: true,
+		slidesPerView: "auto",
+		coverflowEffect: {
+			rotate: 50,
+			stretch: 0,
+			depth: 100,
+			modifier: 1,
+			slideShadows: true,
+		},
+		pagination: {
+			el: ".swiper-pagination",
+		},
 	});
 });
 
@@ -84,28 +121,6 @@ var swiper = new Swiper(".mySwiper", {
 
 
 
-
-
-
-$(window).scroll(function() {
-	$('.toAnim').each(function() {
-
-	  var _win     = $(window),
-		  _ths     = $(this),
-		  _pos    = _ths.offset().top,
-		  _scroll = _win.scrollTop(),
-		  _height = _win.height();
-		  _pos    = _ths.offset().top, // définit le haut de l'écran
-		  _scroll = _win.scrollTop(), // définit le haut de la page entière
-		  _height = _win.height(); // hauteur du browser
-
-		  console.log("Valeur de _pos : " + _pos);
-		  console.log("Valeur de _scroll : " + _scroll);
-
-	  (_scroll > _pos - _height * .7) ? _ths.addClass('anim') : _ths.removeClass('anim');
-
-	});
-  });
 
 
 
@@ -142,19 +157,3 @@ $(window).scroll(function() {
 //   // Écouteur d'événement pour vérifier lorsque la fenêtre est scrollée ou redimensionnée
 //   window.addEventListener('scroll', toggleAnimClass);
 //   window.addEventListener('resize', toggleAnimClass);
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-

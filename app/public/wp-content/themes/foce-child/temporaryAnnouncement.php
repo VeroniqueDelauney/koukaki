@@ -1,9 +1,12 @@
 <div class="row">
     <section id="nomination" class="toAnim">
         <div>
+            
             <h3>
-                
-                    Fleurs d’oranger & chats errants est nominé aux Oscars Short Film Animated de 2022 !
+            <div data-bottom-top="transform:translateY(180px); opacity(50px)" data-center-top="transform:translateY(0px); opacity(1)">
+                Fleurs d'oranger & chats errants est nominé aux Oscars Short Film Animated de 2022 !
+            </div>
+                    
                 
             </h3>
         </div>

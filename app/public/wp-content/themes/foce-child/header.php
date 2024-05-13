@@ -37,14 +37,16 @@
             </button>
             
             <div id="showMenu">
-                <div id="menuContent" st>
-                    <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> ">
+                <div id="menuContent">                    
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?> ">
                     <ul>
-                        <li><a href="#story" class="link">Histoire</a></li>
-                        <li><a href="#characters" class="link">Personnages</a></li>                
-                        <li><a href="#place" class="link">Lieu</a></li>
-                        <li><a href="#studio" class="link">Studio Koukaki</a></li>
+                        <li class="orchid"><a href="#story" class="animationDown">Histoire</a></li>
+                        <li class="purple_cat"><a href="#characters" class="animationDown">Personnages</a></li>                
+                        <li class="black_cat"><a href="#place" class="animationDown">Lieu</a></li>
+                        <li class="red_flower"><a href="#studio" class="animationDown">Studio Koukaki</a></li>
                     </ul>
+
+                    <div class="name">STUDIO KOUKAKI</div>
                 </div>
             </div>
 

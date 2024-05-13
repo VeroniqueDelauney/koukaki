@@ -6,16 +6,18 @@ get_header();
 
         <section class="banner toAnim">            
         
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " 
+            <!-- <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " 
                 alt="logo Fleurs d'oranger & chats errants" class=" zindex100"
                 data-0="transform:translateY(100%)" 	
                 data-300="transform:translateY(0%)"
-            >
+            > -->
+            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " 
+                alt="logo Fleurs d'oranger & chats errants" class="floatingElement zindex100" >
 
             <video autoplay loop muted 
-            data-0="bottom: 100%;" 
-            data-50="bottom: 50%;" 
-            data-100="bottom: 0%">
+                data-0="bottom: 100%;" 
+                data-50="bottom: 50%;" 
+                data-100="bottom: 0%">
                 <source src="<?php echo get_stylesheet_directory_uri() . '/assets/Studio+Koukaki-vidéo+header+sans+son.mp4'; ?> " type="video/mp4" style="position: absolute;" data-bottom-top="transform:translate3d(0, 0px, 0)" data-top-bottom="transform:translate3d(0, -200px, 0)">
             </video>
         </section>
@@ -98,8 +100,8 @@ get_header();
                 </div>
             </h2>
             <div>
-                <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
-                <p>Avec une créativité et une capacité d’innovation mondialement reconnues, une expertise éditoriale et commerciale à la pointe de son industrie, le Studio Koukaki se positionne comme un acteur incontournable dans un marché en forte croissance. Koukaki construit chaque année de véritables succès et capitalise sur de puissantes marques historiques. Cette année, il vous présente “Fleurs d’oranger et chats errants”.</p>
+                <p>Acteur majeur de l'animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
+                <p>Avec une créativité et une capacité d'innovation mondialement reconnues, une expertise éditoriale et commerciale à la pointe de son industrie, le Studio Koukaki se positionne comme un acteur incontournable dans un marché en forte croissance. Koukaki construit chaque année de véritables succès et capitalise sur de puissantes marques historiques. Cette année, il vous présente “Fleurs d'oranger et chats errants”.</p>
             </div>
         </section>
 

@@ -1,3 +1,21 @@
+@mixin animation10seconds {
+    animation: rotation 10s infinite linear 
+}
+
+@mixin absolute {
+    position: absolute!important
+}
+
+
+@media screen and (min-width: 700px) {
+    .main-navigation {
+        min-height: 80px;
+        position: fixed;
+        width: 1440px;
+    }
+}
+
+
 #masthead {
 
     a.site-title {
@@ -10,23 +28,23 @@
         right: 2em;
         bottom: 1.5em;
         display: block;
-        position: absolute;
         cursor: pointer;
+        @include absolute;
     }
 
-
-    #showMenu {     
+    #showMenu {    
+        overflow: hidden!important; 
         animation-name: show;
-        animation-duration: 3s;
+        animation-duration: 1s;
         @keyframes show {
             0% { opacity: 0.4 }                
-            100% { opacity: 0.8 }    
+            100% { opacity: 1 }    
         }
         opacity: 1;
         background:#fff5e9;
         height:100%;
         width:100%;
-        text-align: center;
+        text-align: center;       
         position: fixed;
         top: 80px;
         margin: auto;
@@ -34,49 +52,145 @@
         z-index: 0;            
 
         #menuContent {
+            z-index: 0;
+            height:70%;
+            position:relative;
             animation-name: movingDown;
             animation-duration: 3s;
             animation-fill-mode: forwards;
             @keyframes movingDown {
                 0% { transform: translateY(0%) }                
-                100%   { transform: translateY(15%) }    
+                100%   { transform: translateY(8%) }    
             }
+        }
+
+        .name {
+            @include absolute;
+            width:100%;
+            text-align: center;
+            top: 700px;
+            margin-left:auto;
+            margin-right:auto;
+            bottom: 0
         }
 
         img {
             width:300px;
-            padding: 3em 1em 1em 1em;             
+            padding: 0 1em 1em 1em; 
+            filter: blur(15);
+            box-shadow: hsl(22, 100%, 50%);
         }
 
         ul {
             flex-direction: column;
-            justify-content:initial;
+            justify-content:initial;          
     
             li {
+
                 font-size:2.7em;
                 text-align: center;
-                padding:0.5em;
+                padding:0.5em;   
 
-                a {
-                    color:black;   
-                    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-                    transition: color 1s;   
-                    
-                    &:hover {
-                        color:red;
-                        text-shadow: 2px 2px 5px rgba(211, 89, 18, 0.5);
+                ::after, ::before {
+                    @include absolute;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    display: inline-block;
+                    content:"";
+                }
+                
+                &.orchid {
+                    ::before {
+                        top: -4em;
+                        left: -2em;                        
+                        background-image: url(http://koukaki.local/wp-content/themes/foce/assets/images/orchid.png);                        
+                        width: 5em; 
+                        height: 5em;   
+                        @include animation10seconds;              
+                    }
+
+                    ::after {
+                        top: -3em;
+                        right: 5em;                        
+                        background-image: url(http://koukaki.local/wp-content/themes/foce/assets/images/sunflower.png);                        
+                        width: 5em; 
+                        height: 5em;   
+                        @include animation10seconds; 
+                    }
+                }
+
+                &.purple_cat {
+                    ::before {
+                        top: -1em;
+                        left: 7em;                        
+                        background-image: url(http://koukaki.local/wp-content/themes/foce-child/assets/img/cat1.png);                        
+                        width: 3em; 
+                        height: 3em;
+                    }
+
+                    ::after {
+                        right: -1.3em;                        
+                        background-image: url(http://koukaki.local/wp-content/themes/foce/assets/images/random_flower.png);                        
+                        width: 2em; 
+                        height: 2em;                        
+                        animation: rotation 5s infinite linear
                     }
                 }
                 
+                &.black_cat {
+                    ::before {
+                        background-image: url(http://koukaki.local/wp-content/themes/foce-child/assets/img/flower_orange.png);
+                        width: 2em; 
+                        height: 2em; 
+                        left: 8em;
+                        top: 0;
+                        @include animation10seconds; 
+                    }
+
+                    ::after {
+                        background-image: url(http://koukaki.local/wp-content/themes/foce-child/assets/img/cat3.png);
+                        width: 3.5em; 
+                        height: 3.5em; 
+                        right: 10em;
+                        top: -1em
+                    }                    
+                }
+
+                &.red_flower {
+                    ::before {
+                        background-image: url(http://koukaki.local/wp-content/themes/foce-child/assets/img/cat2.png);
+                        width: 2.5em; 
+                        height: 2.5em; 
+                        left: 0;
+                        bottom: -3em;
+                    }
+
+                    ::after {
+                        background-image: url(http://koukaki.local/wp-content/themes/foce-child/assets/img/hibiscus.png);
+                        width: 12em; 
+                        height: 12em; 
+                        right: -5em;
+                        bottom: -8em;
+                        @include animation10seconds; 
+                    }
+                }
+                
+                a {
+                    color:black;   
+                    
+                    &:hover {
+                        text-shadow: #FF5C00 1px 0 14px!important;
+                    }
+                }     
             }
         }
     }
 
     #site-navigation {
+        position: relative;
         display: flex; 
         z-index: 100;  
     }    
-
    
     .main-navigation {
         display:none;        
@@ -88,7 +202,6 @@
         }
 
         .rotate {
-            //transition: transform 3s ease;
             transition-property: transform;
             transition-duration: 3s;
             transition-timing-function: ease;
@@ -126,53 +239,98 @@
     
 }
 
-// .showMenu {
-//     background: lightblue;
-//     width: 100%;
-//     height: 0;
-//     overflow: hidden;
-//     transition: 1s height ease-in-out;
-//   }
-  
-// .showMenu.start {
-//     height: 100vh;
-// }
 
-/* Animation de rotation pour les fleurs */
+/* -- ROTATING FLOWERS -- */
 .story__article::after, .story h2::after, #studio h2::before, #studio h2::after, .site-footer::before, .site-footer::after {
     animation: rotation 20s infinite linear;
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+     }
  }
- 
- @keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
- }
+ /* -- END -- */
 
 
- @media screen and (min-width: 700px) {
-    .main-navigation {
-        min-height: 80px;
-        position: fixed;
-        width: 1440px;
+
+
+
+
+
+/* -- FADE IN SECTIONS -- */
+.toAnim {
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+
+    &.anim {
+        opacity: 1;
     }
 }
+ /* -- END -- */
 
-main {
-    padding-top:5.5em
+
+
+/* -- ANIMATION H2 -- */
+h2 {    
+    transform: translateY(0px);
+    opacity: 0;
+    transition: 2s all ease;
+
+    &.anim {
+        transform: translateY(45px);
+        opacity: 1;
+    }
 }
+ /* -- END -- */
+
+
+
+
+/* -- PAGE LOAD -- */
+.animationDown {
+    position: relative;
+    transform: translateY(0px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.animationDownActivated {
+    transform: translateY(45px);
+    opacity: 1;
+}
+/* -- END -- */
+
+
+/* -- FLOATING --*/
+.floatingElement, li.purple_cat ::before, li.black_cat ::after, li.red_flower ::before {
+    animation-name: floating;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+         
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    25% { transform: translate(-10px,  10px); }
+    50%  { transform: translate(8px, 15px); }
+    75% { transform: translate(-10px,  10px); }
+    100%   { transform: translate(0, -0px); }    
+}
+/* -- END -- */
+
+
+
 
 
 footer {
     flex-direction: column;
-
     .row {
         width:100%
     }
-
     ul {
         margin-top: 23em
     }
@@ -192,7 +350,7 @@ footer {
 }
 
 .position-absolute {
-    position: absolute;
+    @include absolute;
 }
 
 .zindex100 {
@@ -205,31 +363,14 @@ footer {
     overflow: hidden;
     display: flex;
     // align-items: center;
-    // justify-content: center;
-    // background-image: url("/wp-content/themes/foce/assets/images/banner.png");
-    background-image: none;
+    justify-content: center;
+    background-image: url("/wp-content/themes/foce/assets/images/banner.png");    
 
     @media screen and (min-width: 601px) {
         min-height: 900px;
         img {
             margin: auto
-        }
-
-        img.logo {
-            //position: sticky;
-            animation-name: floating;
-            animation-duration: 6s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-        }
-                 
-        @keyframes floating {
-            0% { transform: translate(0,  0px); }
-            25% { transform: translate(-10px,  10px); }
-            50%  { transform: translate(8px, 15px); }
-            75% { transform: translate(-10px,  10px); }
-            100%   { transform: translate(0, -0px); }    
-        }
+        }        
 
         video {
             opacity: 1;
@@ -250,6 +391,8 @@ footer {
 
 
 
+
+
 #nomination {
     clear:both;
     display: flex;
@@ -263,7 +406,7 @@ footer {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        padding: 2em;
+        padding: 0.5em 1em;
     }
 
     h3 {
@@ -276,27 +419,12 @@ footer {
     }
 
     .logo {
+        padding-top: 2em;
         width:60%;
         text-align: center;
         background-image:none!important
     }
 }
-
-
-
-
-
-
-// sass --watch theme.scss:theme.css --style compressed
-
-.toAnim {
-    opacity: 0;
-    transition: opacity 3s ease 0s;
-    &.anim {
-        opacity: 1;
-    }
-}
-
 
 
 
@@ -318,13 +446,13 @@ footer {
     }
 }
 
-.story #place > div {
-    max-width: 60%;
-}
-
-
-.story #characters div {
-    background: none;
+.story { 
+    #place > div {
+        max-width: 60%;
+    }
+    #characters div {
+        background: none;
+    }
 }
 
 
@@ -351,47 +479,4 @@ footer {
         }
           
     }
-    
-    
-    
 }
-
-/* Styles to make skrollable work. Copy these to your file. */
-
-
-
-  
-
-
-// .btn {
-//     width:10em;
-//     text-align:center;
-//     padding:1em;
-//     background:pink;
-//     border-radius:0.5em;
-//     margin-top:2em;
-
-//     &:active {
-//         & + .progress {
-//             & > .progress__bar {
-//                 transform: scaleX(3);
-//             }
-//         }
-//     }
-// }
-
-// .progress {
-//     border: 1px solid black;
-//     height:1em;
-//     margin:2em 0;
-//     width:50%;
-//     overflow: hidden;
-    
-//     .progress__bar {
-//         height:100%;
-//         background-color: pink;
-//         transform: scaleX(0);
-//         transition: transform 1000ms cubic-bezier(.32,0,.07,1);
-//         transform-origin: left;
-//     }
-// }
