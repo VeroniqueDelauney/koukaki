@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 		var x = document.getElementById("site-navigation");
 		var menu = document.getElementById("showMenu");
 		var menuToggle = document.querySelector(".menu-toggle");
-
 		if(x.className === "main-navigation toggled") {
 			menu.style.display = "block";
 			menuToggle.classList.add("rotate");		
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 				}
 				else
 				{
-					coef = 0.6;
+					coef = 1.2;
 				}				
 				if (sectionTop < windowHeight * coef) {
 					section.classList.add("anim");
@@ -43,57 +42,64 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 
 
 	// Animation titres h2 et h3
-	var h2Titles = document.querySelectorAll(".animatedTitle");
-	if(h2Titles) {
-		window.addEventListener("scroll", function() {
-			h2Titles.forEach(function (div) {
-				var sectionTopH2 = div.getBoundingClientRect().top;  
-				var windowHeight = window.innerHeight;  
-				if (sectionTopH2 < windowHeight * 0.8) {
-					div.classList.add("anim");
-				}
-				else
-				{
-					div.classList.remove("anim");
-				}
-			});
-		});
-	};
+	// var h2Titles = document.querySelectorAll(".animatedTitle");
+	// if(h2Titles) {
+	// 	window.addEventListener("scroll", function() {
+	// 		h2Titles.forEach(function (div) {
+	// 			var sectionTopH2 = div.getBoundingClientRect().top;  
+	// 			var windowHeight = window.innerHeight;  
+	// 			if (sectionTopH2 < windowHeight * 0.8) {
+	// 				div.classList.add("anim");
+	// 			}
+	// 			else
+	// 			{
+	// 				div.classList.remove("anim");
+	// 			}
+	// 		});
+	// 	});
+	// };
 
 
 	// Animation nuages
-	var clouds = document.querySelectorAll(".clouds");
-	if(clouds) {
-		window.addEventListener("scroll", function() {
-			clouds.forEach(function (div) {
-				var sectionTopH2 = div.getBoundingClientRect().top;  
-				var windowHeight = window.innerHeight;  
-				if (sectionTopH2 < windowHeight * 0.8) {
-					div.classList.add("anim");
-				}
-				else
-				{
-					div.classList.remove("anim");
-				}
+	// var clouds = document.querySelectorAll(".clouds");
+	// if(clouds) {
+	// 	window.addEventListener("scroll", function() {
+	// 		clouds.forEach(function (div) {
+	// 			var sectionTopH2 = div.getBoundingClientRect().top;  
+	// 			var windowHeight = window.innerHeight;  
+	// 			if (sectionTopH2 < windowHeight * 0.8) {
+	// 				div.classList.add("anim");
+	// 			}
+	// 			else
+	// 			{
+	// 				div.classList.remove("anim");
+	// 			}
+	// 		});
+	// 	});
+	// };
+
+	
+	// Fonction pour l'animation des titres h2 et des nuages
+	function toggleAnimClass(selecteur) {
+		var selecteurs = document.querySelectorAll(selecteur);
+		if(selecteurs) {
+			window.addEventListener("scroll", function() {
+				selecteurs.forEach(function (div) {
+					var sectionTop = div.getBoundingClientRect().top;  
+					var windowHeight = window.innerHeight;  
+					if (sectionTop < windowHeight * 0.8) {
+						div.classList.add("anim");
+					}
+					else
+					{
+						div.classList.remove("anim");
+					}
+				});
 			});
-		});
-	};
-
-
-	// Affichage des liens du menu en plein écran
-	window.addEventListener("scroll", function() {
-		var reveals = document.querySelectorAll("a.animationDown");
-		for (var i = 0; i < reveals.length; i++) {
-			var windowHeight = window.innerHeight;
-			var elementTop = reveals[i].getBoundingClientRect().top;
-			var elementVisible = 2;			
-			if (elementTop < windowHeight - elementVisible) {
-				reveals[i].classList.add("animationDownActivated");
-			} else {
-				reveals[i].classList.remove("animationDownActivated");
-			}
-		}	
-	});
+		};
+	}
+	toggleAnimClass(".clouds");
+	toggleAnimClass(".animatedTitle");
 
 
 	// Cacher le menu plein écran qd un lien a été cliqué
