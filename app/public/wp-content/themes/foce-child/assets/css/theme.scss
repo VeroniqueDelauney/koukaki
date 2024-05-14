@@ -15,6 +15,9 @@
     }
 }
 
+#primary {
+    overflow: hidden
+}
 
 #masthead {
 
@@ -34,13 +37,11 @@
 
     #showMenu {    
         overflow: hidden!important; 
-        animation-name: show;
-        animation-duration: 1s;
+        animation: show 1s ease-in-out;
         @keyframes show {
             0% { opacity: 0.4 }                
             100% { opacity: 1 }    
         }
-        opacity: 1;
         background:#fff5e9;
         height:100%;
         width:100%;
@@ -53,43 +54,63 @@
 
         #menuContent {
             z-index: 0;
-            height:70%;
+            height:87%;
             position:relative;
             animation-name: movingDown;
             animation-duration: 3s;
             animation-fill-mode: forwards;
             @keyframes movingDown {
                 0% { transform: translateY(0%) }                
-                100%   { transform: translateY(8%) }    
+                100%   { transform: translateY(4%) }    
+            }
+
+            .name {
+                bottom: 0;
+                position: fixed;
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                height:50px;
+                width: 100%;
             }
         }
 
-        .name {
-            @include absolute;
-            width:100%;
-            text-align: center;
-            top: 700px;
-            margin-left:auto;
-            margin-right:auto;
-            bottom: 0
-        }
+        
 
         img {
             width:300px;
-            padding: 0 1em 1em 1em; 
+            padding: 0; 
             filter: blur(15);
             box-shadow: hsl(22, 100%, 50%);
         }
 
         ul {
             flex-direction: column;
-            justify-content:initial;          
-    
-            li {
+            justify-content:initial;    
 
+            li {
+                opacity: 0;
                 font-size:2.7em;
                 text-align: center;
-                padding:0.5em;   
+                padding:0;   
+
+                animation: animatedLink 2s ease-in-out both;
+                
+                &:nth-child(1) { animation-delay: 0.5s; }
+                &:nth-child(2) { animation-delay: 1s; }
+                &:nth-child(3) { animation-delay: 1.5s; }
+                &:nth-child(4) { animation-delay: 2s; }
+
+                @keyframes animatedLink{ 
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+                }
 
                 ::after, ::before {
                     @include absolute;
@@ -177,6 +198,7 @@
                 
                 a {
                     color:black;   
+                    padding: 0.7em;
                     
                     &:hover {
                         text-shadow: #FF5C00 1px 0 14px!important;
@@ -241,7 +263,7 @@
 
 
 /* -- ROTATING FLOWERS -- */
-.story__article::after, .story h2::after, #studio h2::before, #studio h2::after, .site-footer::before, .site-footer::after {
+.story__article::after, .story h2::after, #studio h2::before, #studio h2::after, .site-footer::before, .site-footer::after, .site-footer ul::after {
     animation: rotation 20s infinite linear;
 
     @keyframes rotation {
@@ -275,34 +297,26 @@
 
 
 /* -- ANIMATION H2 -- */
-h2 {    
-    transform: translateY(0px);
+.animatedTitle {        
     opacity: 0;
-    transition: 2s all ease;
+    transition: opacity 2.5s ease-in-out;     
 
     &.anim {
-        transform: translateY(45px);
         opacity: 1;
+        animation-name: scrollY;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;    
+        
+        @keyframes scrollY {
+            0% { transform: translateY(70px); }    
+            50% { transform: translateY(0px); }
+        }
+
     }
-}
+}    
  /* -- END -- */
 
-
-
-
-/* -- PAGE LOAD -- */
-.animationDown {
-    position: relative;
-    transform: translateY(0px);
-    opacity: 0;
-    transition: 2s all ease;
-}
-
-.animationDownActivated {
-    transform: translateY(45px);
-    opacity: 1;
-}
-/* -- END -- */
+                   
 
 
 /* -- FLOATING --*/
@@ -467,6 +481,16 @@ footer {
         filter: blur(15px); 
         
         .clouds {
+
+            &.anim {
+                animation-name: scrollX;
+                animation-duration: 4s;
+                animation-timing-function: linear;       
+                @keyframes scrollX {
+                    0% { transform: translateX(500px); }    
+                    50% { transform: translateX(200px); }
+                    }
+                }
     
             & > img:first-child {
                 margin-left:10em
@@ -480,3 +504,197 @@ footer {
           
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* PHONES */
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .banner {
+        min-height: 200px;
+        margin-bottom: 2em;
+
+        &.toAnim {
+            opacity: 1;
+        }
+    }
+
+    #masthead {
+
+        #showMenu {
+            top: 45px;
+
+            img {
+                width:150px
+            }
+
+            ul li {
+                font-size:1.7em;
+
+                a {
+                    padding: 0.5em
+                }
+
+                &.orchid {
+                    ::before {
+                        left: -1.5em;                        
+                        width: 2em; 
+                        height: 2em;             
+                    }
+
+                    ::after {
+                        right: 3em;                        
+                        width: 2em; 
+                        height: 2em;  
+                    }
+                }
+
+                &.purple_cat {
+                    ::before {
+                        top: -3em;
+                        left: 4em;                     
+                        width: 1.5em; 
+                        height: 1.5em;
+                    }
+
+                    ::after {
+                        right: 0;     
+                        top: 2em;                   
+                        width: 1em;   
+                        height: 1em;                  
+                    }
+                }
+                
+                &.black_cat {
+                    ::before {
+                        width: 1.5em; 
+                        height: 1.5em; 
+                        left: 2em;
+                        top: 0;
+                    }
+
+                    ::after {
+                        width: 1.5em; 
+                        right: 3em;
+                        top: -1em
+                    }                    
+                }
+
+                &.red_flower {
+                    ::before {
+                        width: 1.5em;
+                        left: 0;
+                        bottom: -2em;
+                    }
+
+                    ::after {
+                        width: 6em;
+                        height:6em;
+                        right: -3em;
+                        bottom: -4em;
+                    }
+                }
+
+                    
+
+
+            }
+        }
+
+        .menu-toggle {
+            right: 0.5em;
+            bottom: 0em;
+        }
+
+        .toggled .menu-toggle {
+            top: 1em;
+        }
+
+        a.site-title {
+            padding: 0.5em 0 0.5em 2em;
+            text-align: left;
+            width: 100%;
+        }
+
+        .main-navigation {
+            .line {
+                width: 30px;
+            }
+            .site-title {
+                font-size: 1.3em;
+            }
+        } 
+    } 
+
+
+    h2 {
+        font-size: 2.1em
+    }
+
+    h3 {
+        font-size: 1.8em
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .swiper {
+        width: 90%;
+        
+        h3 {
+            text-align: center;
+            background-position: center;
+        }
+    }
+
+    .swiper-3d .swiper-slide {
+        min-width:200px;
+    }
+
+    .story #place {
+        div p {
+            padding: 2em 0;
+        }
+        h3 {
+            width: 100%;
+        }
+    } 
+
+
+
+    #nomination {
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+
+        div {
+            text-align: center;
+        }
+
+        .logo { 
+            width: 100%;
+            padding: 0 0 10em 0;
+        }
+    }
+
+    footer {
+        .row {
+            font-size: 0.8em;
+        }
+
+        
+    } 
+
+}
+
