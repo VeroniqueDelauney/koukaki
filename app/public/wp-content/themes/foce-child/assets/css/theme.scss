@@ -330,7 +330,7 @@ $flexColum: column;
     &.anim {
         @include opacity(1);
         animation-name: scrollY;
-        animation-duration: 2s;
+        animation-duration: 3s;
         animation-timing-function: ease-in-out;    
         
         @keyframes scrollY {
@@ -378,6 +378,7 @@ footer {
 
 /* -- HERO BANNER -- */
 .banner {
+    padding-bottom: 2em;
     margin-bottom:5em;
     position: relative;
     display: flex;
