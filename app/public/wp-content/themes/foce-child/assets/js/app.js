@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", (event) => { // On attend que toute la page soit chargée 
+	
+	var s = skrollr.init();
+	
 	document.getElementById("showMenu").style.display = "none";	
 	
 	document.querySelector('.menu-toggle').addEventListener('click',function() {
@@ -98,7 +101,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 			});
 		};
 	}
-	toggleAnimClass(".clouds");
+	//toggleAnimClass(".clouds");
 	toggleAnimClass(".animatedTitle");
 
 
@@ -133,4 +136,47 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 			el: ".swiper-pagination",
 		},
 	});
+
+
+
+
+	// function animClouds() {
+	// 	var clouds = document.querySelector('.big_cloud_container');
+	// 	clouds.forEach(function(elem) {
+	// 		if (isInViewport(elem)) {
+	// 			elem.classList.add('anim');
+	// 		};
+	// 	});
+	// };
+	// animClouds();
+
+	// Nuages
+	// DEPLACEMENT DES NUAGES DE DROITE A GAUCHE
+	
+	// const scrollOffset = 100;
+	// const scrollElement = document.querySelector(".clouds");
+	// const elementInView = (el, offset = 0) => {
+	// const elementTop = el.getBoundingClientRect().top;
+	// return (
+	// 	elementTop <= 
+	// 	((window.innerHeight || document.documentElement.clientHeight) - offset)
+	// 	);
+	// };
+
+	// const displayScrollElement = () => {
+	// scrollElement.classList.add('anim');
+	// }
+	// const hideScrollElement = () => {
+	// scrollElement.classList.remove('anim');
+	// }
+	// const handleScrollAnimation = () => {
+	// if (elementInView(scrollElement, scrollOffset)) {
+	// 	displayScrollElement();
+	// } else {
+	// 	hideScrollElement();
+	// }
+	// }
+	// window.addEventListener('scroll', () => {
+	// handleScrollAnimation();
+	// })
 });

@@ -474,19 +474,10 @@ footer {
         .big_cloud_container {
             @include absolute;
             right: 0;
-            width:60%;
+            width:70%;
             filter: blur(15px); 
             
             .clouds {
-    
-                &.anim {
-                    animation: scrollX 4s linear;   
-                    @keyframes scrollX {
-                        0% { transform: translateX(500px); }    
-                        50% { transform: translateX(200px); }
-                        }
-                    }
-        
                 & > img:first-child {
                     margin-left:10em
                 }
@@ -495,8 +486,7 @@ footer {
                     padding-top: 5em; 
                     display:block;
                 }
-            }
-              
+            }              
         }
 
         > div {

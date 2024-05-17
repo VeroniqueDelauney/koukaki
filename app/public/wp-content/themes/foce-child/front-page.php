@@ -69,9 +69,9 @@ get_header();
             </article>
             <article id="place">
                 <div class="big_cloud_container">
-                    <div class="clouds">
-                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/big_cloud.png'; ?> " />
-                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/little_cloud.png'; ?> " />
+                    <div class="clouds" data-bottom-top="transform:translateX(100%)" data-top-top="transform:translateX(0%)">
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/big_cloud.png'; ?> " alt="Nuage du haut" />
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/little_cloud.png'; ?> " alt="Nuage du bas" />
                     </div>
                 </div>                
                 <div>
