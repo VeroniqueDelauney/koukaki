@@ -383,32 +383,13 @@ footer {
     position: relative;
     display: flex;
     justify-content: center;
-    opacity: 0;    
-
-    &.anim {
-        opacity: 1;
-        transition: opacity 2s ease-in;
-        background-image: url("../../../foce/assets/images/banner.png");
-    }
+    background-image: url("../../../foce/assets/images/banner.png");    
 
     @media screen and (min-width: 601px) {
         img {
-            @include marginAuto;        
-
-            &.anim {
-                animation-name: movingUp;
-                animation-duration: 2s;
-                animation-iteration-count: 1;
-                @keyframes movingUp {
-                    0% { transform: translateY(800px) }                
-                    100%   { transform: translateY(0px) }    
-                }
-            }
-
-            &.sticky {
-                position: sticky;
-                top: 100px;    
-            }
+            @include marginAuto;
+            position: sticky;
+            top: 8em;
         }        
 
         video {
@@ -418,15 +399,6 @@ footer {
             position: absolute;
             top: 0;
             left: 0;
-            &.anim {
-                animation-name: movingDown;
-                animation-duration: 2s;
-                animation-fill-mode: forwards;
-                @keyframes movingDown {
-                    0% { transform: translateY(-100%) }                
-                    100%   { transform: translateY(0%) }    
-                }
-            }
         } 
     }
 
@@ -697,6 +669,5 @@ footer {
             font-size: 0.8em;
         }        
     } 
-
 
 }
