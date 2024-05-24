@@ -51,7 +51,9 @@ $flexColum: column;
     @include zIndex(100);
 }
 
-
+html, body {
+    overflow-y: initial !important;
+}
 
 /* Overflow hidden */
 #showMenu, .big_cloud_container {
@@ -110,15 +112,15 @@ $flexColum: column;
                 height:50px;
                 width: $width100;
             }
+
+            img {
+                width:154px;
+                margin: 3em 0 0 0; 
+            }
+    
         }
 
-        img {
-            width:300px;
-            padding: 0; 
-            filter: blur(15);
-            box-shadow: hsl(22, 100%, 50%);
-        }
-
+        
         ul {
             flex-direction: $flexColum;
             justify-content:initial;    
@@ -178,7 +180,7 @@ $flexColum: column;
                     ::before {
                         top: -1em;
                         left: 7em;                        
-                        background-image: url(http://koukaki.local../img/cat1.png);                        
+                        background-image: url(../../../foce/assets/images/cat1.png);                        
                         width: 3em; 
                         height: 3em;
                     }
@@ -194,7 +196,7 @@ $flexColum: column;
                 
                 &.black_cat {
                     ::before {
-                        background-image: url(http://koukaki.local../img/flower_orange.png);
+                        background-image: url(../../../foce/assets/images/flower_orange.png);
                         width: 2em; 
                         height: 2em; 
                         left: 8em;
@@ -203,7 +205,7 @@ $flexColum: column;
                     }
 
                     ::after {
-                        background-image: url(http://koukaki.local../img/cat3.png);
+                        background-image: url(../../../foce/assets/images/cat3.png);
                         width: 3.5em; 
                         height: 3.5em; 
                         right: 10em;
@@ -213,7 +215,7 @@ $flexColum: column;
 
                 &.red_flower {
                     ::before {
-                        background-image: url(http://koukaki.local../img/cat2.png);
+                        background-image: url(../../../foce/assets/images/cat2.png);                        
                         width: 2.5em; 
                         height: 2.5em; 
                         left: 0;
@@ -221,11 +223,11 @@ $flexColum: column;
                     }
 
                     ::after {
-                        background-image: url(http://koukaki.local../img/hibiscus.png);
+                        background-image: url(../../../foce/assets/images/hibiscus.png);
                         width: 12em; 
                         height: 12em; 
                         right: -5em;
-                        bottom: -8em;
+                        bottom: -11em;
                         @include animation10seconds; 
                     }
                 }
@@ -334,8 +336,8 @@ $flexColum: column;
         animation-timing-function: ease-in-out;    
         
         @keyframes scrollY {
-            0% { transform: translateY(70px); }    
-            50% { transform: translateY(0px); }
+            0% { transform: translateY(60px); }    
+            100% { transform: translateY(0px); }
         }
 
     }
@@ -383,13 +385,32 @@ footer {
     position: relative;
     display: flex;
     justify-content: center;
-    background-image: url("../../../foce/assets/images/banner.png");    
+    opacity: 0;    
+
+    &.anim {
+        opacity: 1;
+        transition: opacity 2s ease-in;
+        background-image: url("../../../foce/assets/images/banner.png");
+    }    
 
     @media screen and (min-width: 601px) {
         img {
             @include marginAuto;
-            position: sticky;
-            top: 8em;
+            
+            &.anim {
+                animation-name: movingUp;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+                @keyframes movingUp {
+                    0% { transform: translateY(800px) }                
+                    100%   { transform: translateY(0px) }    
+                }
+            }
+
+            &.sticky {
+                position: sticky;
+                top: 100px;    
+            }
         }        
 
         video {
@@ -399,13 +420,24 @@ footer {
             position: absolute;
             top: 0;
             left: 0;
+
+            &.anim {
+                animation-name: movingDown;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                @keyframes movingDown {
+                    0% { transform: translateY(-100%) }                
+                    100%   { transform: translateY(0%) }    
+                }
+            }
+            
         } 
     }
 
     @media screen and (max-width: 600px) {
         min-height: 400px;
-        video {
-            display: none
+        video, .big_cloud_container {
+            display: none!important
         }
     }
 }
@@ -421,7 +453,7 @@ footer {
     width:95%;
 
     div {
-        background-image: url("../img/orange_nomination_bg.png");
+        background-image: url("../../../foce/assets/images/orange_nomination_bg.png");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -469,7 +501,7 @@ footer {
 /* -- STORY -- */
 .story { 
     #place {
-        background-image: url(../img/Studio_Koukaki-image_place.png);
+        background-image: url(../images/Studio_Koukaki-image_place.png);
         
         .big_cloud_container {
             @include absolute;
@@ -517,7 +549,8 @@ footer {
             top: 45px;
 
             img {
-                width:150px
+                width:150px;
+                margin: 0!important
             }
 
             ul li {
@@ -664,7 +697,45 @@ footer {
         }
     }
 
+    /* -- ANIMATION H2 -- */
+    #story {
+        #characters {
+            margin-top: 0;
+        }
+
+        h2 {
+            & > .animatedTitle:first-child {
+                @include opacity(0);
+                transition: opacity 2.5s ease-in-out;
+                animation: none;
+                &.anim {
+                    @include opacity(1);
+                }
+            }
+        }
+    } 
+    
+    .animatedTitle {        
+        @include opacity(0);
+        transition: opacity 2.5s ease-in-out;
+
+        &.anim {
+            @include opacity(1);
+            animation: scrollY 3s ease-in-out;
+            
+            @keyframes scrollY {
+                0% { transform: translateY(60px); }    
+                100% { transform: translateY(0px); }
+            }
+
+        }
+    }    
+    
+
     footer {
+        &.site-footer {
+            padding-top: 2em !important;
+        }
         .row {
             font-size: 0.8em;
         }        

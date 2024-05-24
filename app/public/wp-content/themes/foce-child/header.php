@@ -38,7 +38,7 @@
             
             <div id="showMenu">
                 <div id="menuContent">                    
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?> ">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/images/logo_small.png'; ?> ">
                     <ul>
                         <li class="orchid"><a href="#story" class="animationDown">Histoire</a></li>
                         <li class="purple_cat"><a href="#characters" class="animationDown">Personnages</a></li>                

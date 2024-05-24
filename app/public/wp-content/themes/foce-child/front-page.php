@@ -4,28 +4,20 @@ get_header();
 
     <main id="primary" class="site-main">
 
-        <section class="banner toAnim">            
-        
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " 
-                alt="logo Fleurs d'oranger & chats errants" class="floatingElement zindex100" >
-
-            <video autoplay loop muted 
-                data-0="bottom: 100%;" 
-                data-50="bottom: 50%;" 
-                data-100="bottom: 0%">
-                <source src="<?php echo get_stylesheet_directory_uri() . '/assets/Studio+Koukaki-vidéo+header+sans+son.mp4'; ?> " type="video/mp4" style="position: absolute;" data-bottom-top="transform:translate3d(0, 0px, 0)" data-top-bottom="transform:translate3d(0, -200px, 0)">
-            </video>
+    <section class="banner">
+            <img id="Image" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" class="floatingElement zindex100" >           
+            <video autoplay loop muted class="video">
+                <source src="<?php echo get_stylesheet_directory_uri() . '/assets/Studio+Koukaki-vidéo+header+sans+son.mp4'; ?> " 
+                type="video/mp4" >
+            </video> 
         </section>
-
-
         
-        <section id="#story" class="story toAnim">
+        <section id="story" class="story toAnim">
             <h2>
                 <div class="animatedTitle">
                     L'histoire
                 </div>
             </h2>
-
            
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
@@ -69,9 +61,9 @@ get_header();
             </article>
             <article id="place">
                 <div class="big_cloud_container">
-                    <div class="clouds" data-bottom-top="transform:translateX(100%)" data-top-top="transform:translateX(0%)">
-                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/big_cloud.png'; ?> " alt="Nuage du haut" />
-                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/little_cloud.png'; ?> " alt="Nuage du bas" />
+                    <div class="clouds" data-bottom-top="transform:translateX(300px)" data-top-top="transform:translateX(0px)">
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/big_cloud.png'; ?> " alt="Nuage du haut" />
+                        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/little_cloud.png'; ?> " alt="Nuage du bas" />
                     </div>
                 </div>                
                 <div>

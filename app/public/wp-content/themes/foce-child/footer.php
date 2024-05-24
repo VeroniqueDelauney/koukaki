@@ -12,6 +12,8 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+      <div>
+       
 
         <!-- Partial template for film nomination -->
         <?php get_template_part( 'temporaryAnnouncement' ); ?> 

@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 	});
 	
 
-
-
-	// Animation fade-in des sections
+	// Animation SCROLL fade-in des sections
 	var sections = document.querySelectorAll("section");
 	if(sections) {
 		window.addEventListener("scroll", function() {
@@ -44,45 +42,32 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 	};
 
 
-	// Animation titres h2 et h3
-	// var h2Titles = document.querySelectorAll(".animatedTitle");
-	// if(h2Titles) {
-	// 	window.addEventListener("scroll", function() {
-	// 		h2Titles.forEach(function (div) {
-	// 			var sectionTopH2 = div.getBoundingClientRect().top;  
-	// 			var windowHeight = window.innerHeight;  
-	// 			if (sectionTopH2 < windowHeight * 0.8) {
-	// 				div.classList.add("anim");
-	// 			}
-	// 			else
-	// 			{
-	// 				div.classList.remove("anim");
-	// 			}
-	// 		});
-	// 	});
-	// };
+	// Animation LOAD fade-in hero
+	function callAnim(selecteur) {
+		var selecteurs = document.querySelectorAll(selecteur);
+		if(selecteurs) {
+			window.addEventListener("load", function() {
+				selecteurs.forEach(function (div) {
+					div.classList.add("anim");
+				});
+			});
+		};
+	}
+	callAnim(".banner");
+	callAnim(".video");
+	callAnim(".floatingElement");
 
 
-	// Animation nuages
-	// var clouds = document.querySelectorAll(".clouds");
-	// if(clouds) {
-	// 	window.addEventListener("scroll", function() {
-	// 		clouds.forEach(function (div) {
-	// 			var sectionTopH2 = div.getBoundingClientRect().top;  
-	// 			var windowHeight = window.innerHeight;  
-	// 			if (sectionTopH2 < windowHeight * 0.8) {
-	// 				div.classList.add("anim");
-	// 			}
-	// 			else
-	// 			{
-	// 				div.classList.remove("anim");
-	// 			}
-	// 		});
-	// 	});
-	// };
+	// Add sticky
+	var image = document.getElementById("Image");
+	if(image) {
+		window.addEventListener("scroll", function() {
+			document.getElementById("Image").classList.add("sticky");
+		});
+	};
 
 	
-	// Fonction pour l'animation des titres h2 et des nuages
+	// Fonction pour l'animation des titres h2
 	function toggleAnimClass(selecteur) {
 		var selecteurs = document.querySelectorAll(selecteur);
 		if(selecteurs) {
@@ -90,7 +75,17 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 				selecteurs.forEach(function (div) {
 					var sectionTop = div.getBoundingClientRect().top;  
 					var windowHeight = window.innerHeight;  
-					if (sectionTop < windowHeight * 0.8) {
+
+					var coef = 0;
+					if (window.innerWidth >= 480) {
+						coef = 1.2;
+					}
+					else
+					{
+						coef = 1.5;
+					}	
+
+					if (sectionTop < windowHeight * coef) {
 						div.classList.add("anim");
 					}
 					else
@@ -101,7 +96,6 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 			});
 		};
 	}
-	//toggleAnimClass(".clouds");
 	toggleAnimClass(".animatedTitle");
 
 
@@ -120,7 +114,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 
 
 	// Animation personnages
-	var swiper = new Swiper(".mySwiper", {
+	new Swiper(".mySwiper", {
 		effect: "coverflow",
 		grabCursor: true,
 		centeredSlides: true,
@@ -139,44 +133,4 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 
 
 
-
-	// function animClouds() {
-	// 	var clouds = document.querySelector('.big_cloud_container');
-	// 	clouds.forEach(function(elem) {
-	// 		if (isInViewport(elem)) {
-	// 			elem.classList.add('anim');
-	// 		};
-	// 	});
-	// };
-	// animClouds();
-
-	// Nuages
-	// DEPLACEMENT DES NUAGES DE DROITE A GAUCHE
-	
-	// const scrollOffset = 100;
-	// const scrollElement = document.querySelector(".clouds");
-	// const elementInView = (el, offset = 0) => {
-	// const elementTop = el.getBoundingClientRect().top;
-	// return (
-	// 	elementTop <= 
-	// 	((window.innerHeight || document.documentElement.clientHeight) - offset)
-	// 	);
-	// };
-
-	// const displayScrollElement = () => {
-	// scrollElement.classList.add('anim');
-	// }
-	// const hideScrollElement = () => {
-	// scrollElement.classList.remove('anim');
-	// }
-	// const handleScrollAnimation = () => {
-	// if (elementInView(scrollElement, scrollOffset)) {
-	// 	displayScrollElement();
-	// } else {
-	// 	hideScrollElement();
-	// }
-	// }
-	// window.addEventListener('scroll', () => {
-	// handleScrollAnimation();
-	// })
 });
