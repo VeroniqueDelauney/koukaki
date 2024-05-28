@@ -54,7 +54,3 @@
 
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
-
-    <!-- data-0="bottom: 100%;" 
-            data-50="bottom: 50%;" 
-            data-100="bottom: 0%" -->

@@ -116,10 +116,8 @@ html, body {
             img {
                 width:154px;
                 margin: 3em 0 0 0; 
-            }
-    
+            }    
         }
-
         
         ul {
             flex-direction: $flexColum;
@@ -290,18 +288,14 @@ html, body {
             @include absolute;
             top: 0;
             right:0.5em
-        }
-
-        
-    }
-    
+        }        
+    }    
 }
 
 
 /* -- ROTATING FLOWERS -- */
 .story__article::after, .story h2::after, #studio h2::before, #studio h2::after, .site-footer::before, .site-footer::after, .site-footer ul::after {
     animation: rotation 20s infinite linear;
-
     @keyframes rotation {
         from {
             transform: rotate(0deg);
@@ -327,25 +321,22 @@ html, body {
 /* -- ANIMATION H2 -- */
 .animatedTitle {        
     @include opacity(0);
-    transition: opacity 2.5s ease-in-out;     
+    transition: opacity 2s ease-in-out;     
 
     &.anim {
         @include opacity(1);
-        animation-name: scrollY;
-        animation-duration: 3s;
-        animation-timing-function: ease-in-out;    
+        animation: scrollY 2s ease-in-out; 
         
         @keyframes scrollY {
-            0% { transform: translateY(60px); }    
+            0% { transform: translateY(50px); }    
             100% { transform: translateY(0px); }
         }
-
     }
 }    
             
 
 /* -- FLOATING -- */
-.floatingElement, li.purple_cat ::before, li.black_cat ::after, li.red_flower ::before {
+.floatingElement, .banner img.sticky, li.purple_cat ::before, li.black_cat ::after, li.red_flower ::before {
     animation: floating 6s infinite ease-in-out;
     @keyframes floating {
         0% { transform: translate(0,  0px); }
@@ -387,6 +378,18 @@ footer {
     justify-content: center;
     opacity: 0;    
 
+    .animLogo {
+        @include zIndex(100);
+        @include centeredFullWidth();
+        position: sticky;
+        top: 100px;    
+        animation: movingUp 2s forwards;
+        @keyframes movingUp {
+            0% { transform: translateY(800px) }                
+            100%   { transform: translateY(0px) }    
+        }
+    }
+
     &.anim {
         opacity: 1;
         transition: opacity 2s ease-in;
@@ -396,23 +399,19 @@ footer {
     @media screen and (min-width: 601px) {
         img {
             @include marginAuto;
+            animation-name: floating;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
             
-            &.anim {
-                animation-name: movingUp;
-                animation-duration: 2s;
-                animation-iteration-count: 1;
-                @keyframes movingUp {
-                    0% { transform: translateY(800px) }                
-                    100%   { transform: translateY(0px) }    
-                }
-            }
-
-            &.sticky {
-                position: sticky;
-                top: 100px;    
+            @keyframes floating {
+                0% { transform: translate(0,  0px); }
+                25% { transform: translate(-10px,  10px); }
+                50%  { transform: translate(8px, 15px); }
+                75% { transform: translate(-10px,  10px); }
+                100%   { transform: translate(0, -0px); }    
             }
         }        
-
+       
         video {
             @include opacity(1);
             width: 100%;
@@ -436,7 +435,7 @@ footer {
 
     @media screen and (max-width: 600px) {
         min-height: 400px;
-        video, .big_cloud_container {
+        video {
             display: none!important
         }
     }
@@ -476,7 +475,6 @@ footer {
         background-image:none!important
     }
 }
-
 
 
 /* -- SWIPPER -- */
@@ -534,12 +532,24 @@ footer {
 /* PHONES */
 @media (min-width: 320px) and (max-width: 480px) {
 
+    html, body {
+        touch-action: pan-y pinch-zoom!important;
+    }
+
     .banner {
         min-height: 200px;
         margin-bottom: 2em;
 
         &.toAnim {
             @include opacity(1);
+        }
+    }
+
+    #site-navigation {
+        height: 50px;
+        .site-title {
+            font-size: 1em!important;
+            align-self: center
         }
     }
 
@@ -620,12 +630,13 @@ footer {
         }
 
         .menu-toggle {
-            right: 0.5em;
-            bottom: 0em;
+            right: 0;
+            top: 0;
         }
 
         .toggled .menu-toggle {
             top: 1em;
+            right:0.5em
         }
 
         a.site-title {
@@ -644,6 +655,16 @@ footer {
         } 
     } 
 
+    .banner {
+        .animLogo {
+            animation: none
+        }
+
+        .banner img {
+            margin-left: auto;
+            margin-right: auto;        
+        }
+    }
 
     h2 {
         font-size: 2.1em
@@ -679,6 +700,22 @@ footer {
         }
     } 
 
+    #story {
+        #characters {
+            margin-top: 0;
+        }
+
+        h2 {
+            & > .animatedTitle:first-child {
+                @include opacity(0);
+                transition: opacity 2.5s ease-in-out;
+                animation: none;
+                &.anim {
+                    @include opacity(1);
+                }
+            }
+        }
+    } 
 
     #nomination {
         @include marginAuto;
@@ -697,39 +734,26 @@ footer {
         }
     }
 
-    /* -- ANIMATION H2 -- */
-    #story {
-        #characters {
-            margin-top: 0;
-        }
-
-        h2 {
-            & > .animatedTitle:first-child {
-                @include opacity(0);
-                transition: opacity 2.5s ease-in-out;
-                animation: none;
-                &.anim {
-                    @include opacity(1);
-                }
-            }
-        }
-    } 
-    
+    /* -- ANIMATION H2 -- */  
     .animatedTitle {        
         @include opacity(0);
         transition: opacity 2.5s ease-in-out;
 
         &.anim {
             @include opacity(1);
-            animation: scrollY 3s ease-in-out;
+            animation: scrollY 2s ease-in-out;
             
             @keyframes scrollY {
-                0% { transform: translateY(60px); }    
+                0% { transform: translateY(70px); }    
                 100% { transform: translateY(0px); }
             }
 
         }
     }    
+
+    .big_cloud_container {
+        display: none!important;
+    }
     
 
     footer {

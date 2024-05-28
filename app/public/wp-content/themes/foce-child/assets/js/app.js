@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 	
 	var s = skrollr.init();
 	
-	document.getElementById("showMenu").style.display = "none";	
-	
+
+	// Animation des lignes du bouton toggle du menu
+	document.getElementById("showMenu").style.display = "none";		
 	document.querySelector('.menu-toggle').addEventListener('click',function() {
 		var x = document.getElementById("site-navigation");
 		var menu = document.getElementById("showMenu");
@@ -17,48 +18,55 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 			menuToggle.classList.remove("rotate");
 		}
 	});
-	
 
-	// Animation SCROLL fade-in des sections
-	var sections = document.querySelectorAll("section");
-	if(sections) {
-		window.addEventListener("scroll", function() {
-			sections.forEach(function (section) {
-				var sectionTop = section.getBoundingClientRect().top;  
-				var windowHeight = window.innerHeight;  
-				var coef = 0;
-				if (window.innerWidth >= 480) {
-					coef = 0.8;
-				}
-				else
-				{
-					coef = 1.2;
-				}				
-				if (sectionTop < windowHeight * coef) {
-					section.classList.add("anim");
-				}
+	// Cacher le menu plein écran qd un lien a été cliqué
+	let linksMenu = document.querySelectorAll("a.animationDown");
+	if(linksMenu) {
+		linksMenu.forEach(linkMenu => {
+			linkMenu.addEventListener("click",function(){
+				document.querySelector(".main-navigation").classList.remove("toggled");
+				document.querySelector(".menu-toggle").classList.remove("rotate");
+				document.querySelector(".menu-toggle").setAttribute("aria-expanded", false);
+				document.getElementById("showMenu").style.display = "none";
 			});
 		});
-	};
+	}
 
 
-	// Animation LOAD fade-in hero
-	function callAnim(selecteur) {
+	// Animation des sections + hero
+	function callAnim(selecteur, eventToListen) {
 		var selecteurs = document.querySelectorAll(selecteur);
 		if(selecteurs) {
-			window.addEventListener("load", function() {
-				selecteurs.forEach(function (div) {
-					div.classList.add("anim");
+			window.addEventListener(eventToListen, function() {
+				selecteurs.forEach(function (section) {
+					var sectionTop = section.getBoundingClientRect().top;  
+					var windowHeight = window.innerHeight;  
+					var coef = 0;
+					if (window.innerWidth >= 480) {
+						coef = 0.8;
+					}
+					else
+					{
+						coef = 1.2;
+					}				
+					if (sectionTop < windowHeight * coef) {
+						section.classList.add("anim");
+					}
+					else {
+						section.classList.remove("anim");
+					}
 				});
 			});
 		};
 	}
-	callAnim(".banner");
-	callAnim(".video");
-	callAnim(".floatingElement");
+	callAnim("section", "scroll");
+	callAnim(".banner", "load");
+	callAnim(".video", "load");
+	callAnim(".floatingElement", "load");
 
 
-	// Add sticky
+
+	// Ajout de sticky au logo du hero
 	var image = document.getElementById("Image");
 	if(image) {
 		window.addEventListener("scroll", function() {
@@ -67,7 +75,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 	};
 
 	
-	// Fonction pour l'animation des titres h2
+	// Animation des titres h2
 	function toggleAnimClass(selecteur) {
 		var selecteurs = document.querySelectorAll(selecteur);
 		if(selecteurs) {
@@ -78,7 +86,7 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 
 					var coef = 0;
 					if (window.innerWidth >= 480) {
-						coef = 1.2;
+						coef = 0.8;
 					}
 					else
 					{
@@ -99,21 +107,8 @@ document.addEventListener("DOMContentLoaded", (event) => { // On attend que tout
 	toggleAnimClass(".animatedTitle");
 
 
-	// Cacher le menu plein écran qd un lien a été cliqué
-	let linksMenu = document.querySelectorAll("a.animationDown");
-	if(linksMenu) {
-		linksMenu.forEach(linkMenu => {
-			linkMenu.addEventListener("click",function(){
-				document.querySelector(".main-navigation").classList.remove("toggled");
-				document.querySelector(".menu-toggle").classList.remove("rotate");
-				document.querySelector(".menu-toggle").setAttribute("aria-expanded", false);
-				document.getElementById("showMenu").style.display = "none";
-			});
-		});
-	}
 
-
-	// Animation personnages
+	// Animation personnages avec Swiper en coverflow
 	new Swiper(".mySwiper", {
 		effect: "coverflow",
 		grabCursor: true,

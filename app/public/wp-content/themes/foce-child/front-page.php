@@ -4,12 +4,14 @@ get_header();
 
     <main id="primary" class="site-main">
 
-    <section class="banner">
-            <img id="Image" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" class="floatingElement zindex100" >           
+        <section class="banner">
+            <div class="animLogo">
+                <img id="Image" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" class="floatingElement zindex100" >           
+            </div>
             <video autoplay loop muted class="video">
                 <source src="<?php echo get_stylesheet_directory_uri() . '/assets/Studio+Koukaki-vidéo+header+sans+son.mp4'; ?> " 
                 type="video/mp4" >
-            </video> 
+            </video>
         </section>
         
         <section id="story" class="story toAnim">
@@ -18,47 +20,19 @@ get_header();
                     L'histoire
                 </div>
             </h2>
-           
+            
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
             </article>
-            <?php
-            $args = array(
-                'post_type' => 'characters',
-                'posts_per_page' => -1,
-                'meta_key'  => '_main_char_field',
-                'orderby'   => 'meta_value_num',
 
-            );
-            $characters_query = new WP_Query($args);
-            ?>
-            <article id="characters" style="width:100%">
-                <div class="main-character">
-                    <!-- Swiper -->
-                    <div class="swiper mySwiper">
-                        <h3>
-                            <div class="animatedTitle">
-                                Les personnages
-                            </div>
-                        </h3>
-                        <div class="swiper-wrapper">
-                        <?php  
-                        while ( $characters_query->have_posts() ) {
-                            $characters_query->the_post();
-                            echo '<div class="swiper-slide">';
-                            echo '<figure>';
-                            echo get_the_post_thumbnail( get_the_ID(), 'full' );
-                            echo '<figcaption>';
-                            the_title();
-                            echo'</figcaption>';
-                            echo '</figure>';
-                            echo '</div>';
-                        }
-                        ?>
-                        </div>
-                    </div>
-                </div>
-            </article>
+
+
+            <!-- Partial template for personnages -->
+            <?php get_template_part( 'template_personnages' ); ?>
+
+
+
+
             <article id="place">
                 <div class="big_cloud_container">
                     <div class="clouds" data-bottom-top="transform:translateX(300px)" data-top-top="transform:translateX(0px)">
